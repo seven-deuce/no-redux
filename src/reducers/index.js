@@ -11,9 +11,13 @@ function combineReducers(array) {
   return function(state, action) {
     for (let i = 0; i < array.length; ) {
       const result = array[i](state, action);
-      if (Object.is(state, result)) i++;
+      if (Object.is(state, result)) {
+        i++
+        continue
+      }
       else return result;
     }
+    	return state
   };
 }
 
